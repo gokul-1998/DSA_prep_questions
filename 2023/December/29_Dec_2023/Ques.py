@@ -119,4 +119,25 @@ class Solution:
 # A = 3, B = 4
 
 # Solution:
-Do it by yourself :)
+class Solution:
+    # @param A : tuple of integers
+    # @return a list of integers
+    def repeatedNumber(self, A):
+        n = len(A)
+        # Calculate the sum of numbers and sum of squares
+        sum_n = n * (n + 1) // 2
+        sum_sq = n * (n + 1) * (2 * n + 1) // 6
+
+        # Calculate the actual sum and sum of squares
+        actual_sum = sum(A)
+        actual_sum_sq = sum(x*x for x in A)
+
+        # Calculate the difference
+        diff_sum = actual_sum - sum_n
+        diff_sum_sq = actual_sum_sq - sum_sq
+
+        # Calculate the missing and repeating numbers
+        missing_number = (diff_sum + diff_sum_sq // diff_sum) // 2
+        repeating_number = missing_number - diff_sum
+
+        return [missing_number ,repeating_number]
